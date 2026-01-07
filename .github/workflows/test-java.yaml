@@ -2,19 +2,19 @@ name: JavaThemis
 
 on:
   pull_request:
-    paths:
-      - '.github/workflows/test-java.yaml'
-      - '**/*gradle*'
-      - 'docs/examples/android/**'
-      - 'jni/**'
-      - 'src/soter/**'
-      - 'src/themis/**'
-      - 'src/wrappers/themis/android/**'
-      - 'src/wrappers/themis/java/**'
-      - 'third_party/boringssl/src/**'
-      - '**/*.mk'
-      - 'Makefile'
-      - '!**/README*'
+#    paths:
+#      - '.github/workflows/test-java.yaml'
+#      - '**/*gradle*'
+#      - 'docs/examples/android/**'
+#      - 'jni/**'
+#      - 'src/soter/**'
+#      - 'src/themis/**'
+#      - 'src/wrappers/themis/android/**'
+#      - 'src/wrappers/themis/java/**'
+#      - 'third_party/boringssl/src/**'
+#      - '**/*.mk'
+#      - 'Makefile'
+#      - '!**/README*'
   push:
     branches:
       - master

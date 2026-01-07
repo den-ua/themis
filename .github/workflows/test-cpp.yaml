@@ -2,18 +2,18 @@ name: ThemisPP
 
 on:
   pull_request:
-    paths:
-      - '.github/workflows/test-cpp.yaml'
-      # GitHub Actions treat "c++" as invalid glob pattern
-      - 'docs/examples/c*/**'
-      - 'src/soter/**'
-      - 'src/themis/**'
-      - 'src/wrappers/themis/themispp/**'
-      - 'tests/common/**'
-      - 'tests/themispp/**'
-      - '**/*.mk'
-      - 'Makefile'
-      - '!**/README*'
+#    paths:
+#      - '.github/workflows/test-cpp.yaml'
+#      # GitHub Actions treat "c++" as invalid glob pattern
+#      - 'docs/examples/c*/**'
+#      - 'src/soter/**'
+#      - 'src/themis/**'
+#      - 'src/wrappers/themis/themispp/**'
+#      - 'tests/common/**'
+#      - 'tests/themispp/**'
+#      - '**/*.mk'
+#      - 'Makefile'
+#      - '!**/README*'
   push:
     branches:
       - master

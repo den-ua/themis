@@ -2,19 +2,19 @@ name: GoThemis
 
 on:
   pull_request:
-    paths:
-      - '.github/workflows/test-go.yaml'
-      - 'docs/examples/go/**'
-      - 'docs/reference-implementation/**'
-      - 'gothemis/**'
-      - 'src/soter/**'
-      - 'src/themis/**'
-      - 'tests/common/**'
-      - 'tests/reference-implementation/**'
-      - 'tests/test.mk'
-      - '**/*.mk'
-      - 'Makefile'
-      - '!**/README*'
+#    paths:
+#      - '.github/workflows/test-go.yaml'
+#      - 'docs/examples/go/**'
+#      - 'docs/reference-implementation/**'
+#      - 'gothemis/**'
+#      - 'src/soter/**'
+#      - 'src/themis/**'
+#      - 'tests/common/**'
+#      - 'tests/reference-implementation/**'
+#      - 'tests/test.mk'
+#      - '**/*.mk'
+#      - 'Makefile'
+#      - '!**/README*'
   push:
     branches:
       - master

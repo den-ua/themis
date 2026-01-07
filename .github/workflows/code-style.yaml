@@ -2,22 +2,22 @@ name: Code style
 
 on:
   pull_request:
-    paths:
-      - '.github/workflows/code-style.yaml'
-      - 'docs/examples/c*/**'
-      - 'jni/**'
-      - 'src/soter/**'
-      - 'src/themis/**'
-      - 'src/wrappers/themis/jsthemis/**'
-      - 'src/wrappers/themis/themispp/**'
-      - 'tests/common/**'
-      - 'tests/soter/**'
-      - 'tests/themis/**'
-      - 'tests/themispp/**'
-      - 'tools/afl/**'
-      - '**/*.mk'
-      - 'Makefile'
-      - '!**/README*'
+#    paths:
+#      - '.github/workflows/code-style.yaml'
+#      - 'docs/examples/c*/**'
+#      - 'jni/**'
+#      - 'src/soter/**'
+#      - 'src/themis/**'
+#      - 'src/wrappers/themis/jsthemis/**'
+#      - 'src/wrappers/themis/themispp/**'
+#      - 'tests/common/**'
+#      - 'tests/soter/**'
+#      - 'tests/themis/**'
+#      - 'tests/themispp/**'
+#      - 'tools/afl/**'
+#      - '**/*.mk'
+#      - 'Makefile'
+#      - '!**/README*'
   push:
     branches:
       - master

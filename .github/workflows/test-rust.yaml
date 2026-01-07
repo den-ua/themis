@@ -2,17 +2,17 @@ name: RustThemis
 
 on:
   pull_request:
-    paths:
-      - '.github/workflows/test-rust.yaml'
-      - 'docs/examples/rust/**'
-      - 'src/soter/**'
-      - 'src/themis/**'
-      - 'src/wrappers/themis/rust/**'
-      - 'tests/rust/**'
-      - 'Cargo.toml'
-      - '**/*.mk'
-      - 'Makefile'
-      - '!**/README*'
+#    paths:
+#      - '.github/workflows/test-rust.yaml'
+#      - 'docs/examples/rust/**'
+#      - 'src/soter/**'
+#      - 'src/themis/**'
+#      - 'src/wrappers/themis/rust/**'
+#      - 'tests/rust/**'
+#      - 'Cargo.toml'
+#      - '**/*.mk'
+#      - 'Makefile'
+#      - '!**/README*'
   push:
     branches:
       - master

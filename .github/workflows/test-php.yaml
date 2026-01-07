@@ -2,16 +2,16 @@ name: PHPThemis
 
 on:
   pull_request:
-    paths:
-      - '.github/workflows/test-php.yaml'
-      - 'src/soter/**'
-      - 'src/themis/**'
-      - 'src/wrappers/themis/php/**'
-      - 'src/wrappers/themis/php7/**'
-      - 'tests/phpthemis/**'
-      - '**/*.mk'
-      - 'Makefile'
-      - '!**/README*'
+#    paths:
+#      - '.github/workflows/test-php.yaml'
+#      - 'src/soter/**'
+#      - 'src/themis/**'
+#      - 'src/wrappers/themis/php/**'
+#      - 'src/wrappers/themis/php7/**'
+#      - 'tests/phpthemis/**'
+#      - '**/*.mk'
+#      - 'Makefile'
+#      - '!**/README*'
   push:
     branches:
       - master

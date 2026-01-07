@@ -2,20 +2,20 @@ name: ObjCThemis
 
 on:
   pull_request:
-    paths:
-      - '.github/workflows/test-objc.yaml'
-      - 'docs/examples/objc/**'
-      - 'docs/examples/swift/**'
-      - 'src/soter/**'
-      - 'src/themis/**'
-      - 'src/wrappers/themis/Obj-C/**'
-      - 'tests/objcthemis/**'
-      - 'Themis.xcodeproj/**'
-      - 'third_party/boringssl/src/**'
-      - '**/Cartfile*'
-      - '**/Podfile*'
-      - '**/*.podspec'
-      - '!**/README*'
+#    paths:
+#      - '.github/workflows/test-objc.yaml'
+#      - 'docs/examples/objc/**'
+#      - 'docs/examples/swift/**'
+#      - 'src/soter/**'
+#      - 'src/themis/**'
+#      - 'src/wrappers/themis/Obj-C/**'
+#      - 'tests/objcthemis/**'
+#      - 'Themis.xcodeproj/**'
+#      - 'third_party/boringssl/src/**'
+#      - '**/Cartfile*'
+#      - '**/Podfile*'
+#      - '**/*.podspec'
+#      - '!**/README*'
   push:
     branches:
       - master

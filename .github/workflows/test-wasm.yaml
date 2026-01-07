@@ -2,20 +2,20 @@ name: WasmThemis
 
 on:
   pull_request:
-    paths:
-      - '.github/workflows/test-wasm.yaml'
-      - 'docs/examples/wasm/**'
-      - 'src/soter/**'
-      - 'src/themis/**'
-      - 'src/wrappers/themis/wasm/**'
-      - 'tests/common/**'
-      - 'tests/soter/**'
-      - 'tests/themis/**'
-      - '!tests/themis/wrappers/android/**'
-      - 'third_party/boringssl/src/**'
-      - '**/*.mk'
-      - 'Makefile'
-      - '!**/README*'
+#    paths:
+#      - '.github/workflows/test-wasm.yaml'
+#      - 'docs/examples/wasm/**'
+#      - 'src/soter/**'
+#      - 'src/themis/**'
+#      - 'src/wrappers/themis/wasm/**'
+#      - 'tests/common/**'
+#      - 'tests/soter/**'
+#      - 'tests/themis/**'
+#      - '!tests/themis/wrappers/android/**'
+#      - 'third_party/boringssl/src/**'
+#      - '**/*.mk'
+#      - 'Makefile'
+#      - '!**/README*'
   push:
     branches:
       - master

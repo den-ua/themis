@@ -2,16 +2,16 @@ name: PyThemis
 
 on:
   pull_request:
-    paths:
-      - '.github/workflows/test-python.yaml'
-      - 'docs/examples/python/**'
-      - 'src/soter/**'
-      - 'src/themis/**'
-      - 'src/wrappers/themis/python/**'
-      - 'tests/pythemis/**'
-      - '**/*.mk'
-      - 'Makefile'
-      - '!**/README*'
+#    paths:
+#      - '.github/workflows/test-python.yaml'
+#      - 'docs/examples/python/**'
+#      - 'src/soter/**'
+#      - 'src/themis/**'
+#      - 'src/wrappers/themis/python/**'
+#      - 'tests/pythemis/**'
+#      - '**/*.mk'
+#      - 'Makefile'
+#      - '!**/README*'
   push:
     branches:
       - master

@@ -2,24 +2,24 @@ name: Integration testing
 
 on:
   pull_request:
-    paths:
-      - '.github/workflows/integration.yaml'
-      - 'gothemis/**'
-      - 'src/soter/**'
-      - 'src/themis/**'
-      - 'src/wrappers/themis/jsthemis/**'
-      - 'src/wrappers/themis/php/**'
-      - 'src/wrappers/themis/php7/**'
-      - 'src/wrappers/themis/python/**'
-      - 'src/wrappers/themis/ruby/**'
-      - 'src/wrappers/themis/rust/**'
-      - 'src/wrappers/themis/wasm/**'
-      - 'third_party/boringssl/src/**'
-      - 'tools/_integration/**'
-      - 'Cargo.toml'
-      - '**/*.mk'
-      - 'Makefile'
-      - '!**/README*'
+#    paths:
+#      - '.github/workflows/integration.yaml'
+#      - 'gothemis/**'
+#      - 'src/soter/**'
+#      - 'src/themis/**'
+#      - 'src/wrappers/themis/jsthemis/**'
+#      - 'src/wrappers/themis/php/**'
+#      - 'src/wrappers/themis/php7/**'
+#      - 'src/wrappers/themis/python/**'
+#      - 'src/wrappers/themis/ruby/**'
+#      - 'src/wrappers/themis/rust/**'
+#      - 'src/wrappers/themis/wasm/**'
+#      - 'third_party/boringssl/src/**'
+#      - 'tools/_integration/**'
+#      - 'Cargo.toml'
+#      - '**/*.mk'
+#      - 'Makefile'
+#      - '!**/README*'
   push:
     branches:
       - master

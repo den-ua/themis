@@ -2,16 +2,16 @@ name: RbThemis
 
 on:
   pull_request:
-    paths:
-      - '.github/workflows/test-ruby.yaml'
-      - 'docs/examples/ruby/**'
-      - 'src/soter/**'
-      - 'src/themis/**'
-      - 'src/wrappers/themis/ruby/**'
-      - 'tests/rbthemis/**'
-      - '**/*.mk'
-      - 'Makefile'
-      - '!**/README*'
+#    paths:
+#      - '.github/workflows/test-ruby.yaml'
+#      - 'docs/examples/ruby/**'
+#      - 'src/soter/**'
+#      - 'src/themis/**'
+#      - 'src/wrappers/themis/ruby/**'
+#      - 'tests/rbthemis/**'
+#      - '**/*.mk'
+#      - 'Makefile'
+#      - '!**/README*'
   push:
     branches:
       - master
