@@ -27,7 +27,7 @@ env:
 jobs:
   unit-tests:
     name: Unit tests
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         rust: [stable, '1.58']
@@ -78,7 +78,7 @@ jobs:
 
   examples:
     name: Code examples
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         rust: [stable, '1.58']
@@ -179,7 +179,7 @@ jobs:
 
   bindgen:
     name: libthemis-sys bindings
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - name: Install system dependencies
         run: |
