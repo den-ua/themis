@@ -2,19 +2,19 @@ name: JavaThemis
 
 on:
   pull_request:
-    paths:
-      - '.github/workflows/test-java.yaml'
-      - '**/*gradle*'
-      - 'docs/examples/android/**'
-      - 'jni/**'
-      - 'src/soter/**'
-      - 'src/themis/**'
-      - 'src/wrappers/themis/android/**'
-      - 'src/wrappers/themis/java/**'
-      - 'third_party/boringssl/src/**'
-      - '**/*.mk'
-      - 'Makefile'
-      - '!**/README*'
+#    paths:
+#      - '.github/workflows/test-java.yaml'
+#      - '**/*gradle*'
+#      - 'docs/examples/android/**'
+#      - 'jni/**'
+#      - 'src/soter/**'
+#      - 'src/themis/**'
+#      - 'src/wrappers/themis/android/**'
+#      - 'src/wrappers/themis/java/**'
+#      - 'third_party/boringssl/src/**'
+#      - '**/*.mk'
+#      - 'Makefile'
+#      - '!**/README*'
   push:
     branches:
       - master
@@ -32,7 +32,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-20.04, macos-12]
+        os: [ubuntu-latest, macos-latest]
       fail-fast: false
     steps:
       - name: Install system dependencies
@@ -63,7 +63,7 @@ jobs:
 
   android-tests:
     name: Android emulator
-    runs-on: macos-11
+    runs-on: macos-latest
     steps:
       - name: Check out code
         uses: actions/checkout@v2
@@ -99,7 +99,7 @@ jobs:
 
   android-example:
     name: Example – AndroidThemis
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - name: Check out code
         uses: actions/checkout@v2
@@ -112,7 +112,7 @@ jobs:
 
   java-example:
     name: Example project – JavaThemis
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     steps:
       - name: Install system dependencies
         run: |

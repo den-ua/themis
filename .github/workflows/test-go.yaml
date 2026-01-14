@@ -2,19 +2,19 @@ name: GoThemis
 
 on:
   pull_request:
-    paths:
-      - '.github/workflows/test-go.yaml'
-      - 'docs/examples/go/**'
-      - 'docs/reference-implementation/**'
-      - 'gothemis/**'
-      - 'src/soter/**'
-      - 'src/themis/**'
-      - 'tests/common/**'
-      - 'tests/reference-implementation/**'
-      - 'tests/test.mk'
-      - '**/*.mk'
-      - 'Makefile'
-      - '!**/README*'
+#    paths:
+#      - '.github/workflows/test-go.yaml'
+#      - 'docs/examples/go/**'
+#      - 'docs/reference-implementation/**'
+#      - 'gothemis/**'
+#      - 'src/soter/**'
+#      - 'src/themis/**'
+#      - 'tests/common/**'
+#      - 'tests/reference-implementation/**'
+#      - 'tests/test.mk'
+#      - '**/*.mk'
+#      - 'Makefile'
+#      - '!**/README*'
   push:
     branches:
       - master
@@ -29,26 +29,19 @@ env:
 jobs:
   unit-tests:
     name: Unit tests
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     strategy:
       matrix:
-        go:
-          - '1.11'
-          - '1.12'
-          - '1.13'
-          - '1.14'
-          - '1.15'
-          - '1.16'
-          - '1.17'
+        go: ['1.17', '1.20']
       fail-fast: false
     steps:
       - name: Install system dependencies
         run: |
           sudo sh -c 'echo "DEBIAN_FRONTEND=noninteractive" >> /etc/environment'
           sudo apt update
-          sudo apt install --yes gcc make libssl-dev
+          sudo apt install libssl1.1 libssl-dev
       - name: Install Go ${{ matrix.go }}
-        uses: actions/setup-go@v1
+        uses: actions/setup-go@v5
         with:
           go-version: ${{ matrix.go }}
       - run: go version
@@ -63,7 +56,7 @@ jobs:
 
   examples:
     name: Code examples
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - name: Install system dependencies
         run: |
@@ -71,7 +64,7 @@ jobs:
           sudo apt update
           sudo apt install --yes gcc make libssl-dev
       - name: Install Go 1.17
-        uses: actions/setup-go@v1
+        uses: actions/setup-go@v5
         with:
           go-version: 1.17
       - name: Check out code
@@ -121,7 +114,7 @@ jobs:
 
   reference-implementation:
     name: Reference implementation
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - name: Install system dependencies
         run: |

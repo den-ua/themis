@@ -2,16 +2,16 @@ name: PHPThemis
 
 on:
   pull_request:
-    paths:
-      - '.github/workflows/test-php.yaml'
-      - 'src/soter/**'
-      - 'src/themis/**'
-      - 'src/wrappers/themis/php/**'
-      - 'src/wrappers/themis/php7/**'
-      - 'tests/phpthemis/**'
-      - '**/*.mk'
-      - 'Makefile'
-      - '!**/README*'
+#    paths:
+#      - '.github/workflows/test-php.yaml'
+#      - 'src/soter/**'
+#      - 'src/themis/**'
+#      - 'src/wrappers/themis/php/**'
+#      - 'src/wrappers/themis/php7/**'
+#      - 'tests/phpthemis/**'
+#      - '**/*.mk'
+#      - 'Makefile'
+#      - '!**/README*'
   push:
     branches:
       - master
@@ -26,7 +26,7 @@ env:
 jobs:
   unit-tests:
     name: Unit tests
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - name: Install system dependencies
         run: |
@@ -115,7 +115,7 @@ jobs:
 
   examples:
     name: Code examples
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - name: Install system dependencies
         run: |

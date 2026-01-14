@@ -2,21 +2,21 @@ name: Themis Core
 
 on:
   pull_request:
-    paths:
-      - '.github/workflows/test-core.yaml'
-      - 'benches/themis/**'
-      - 'docs/examples/c/**'
-      - 'src/soter/**'
-      - 'src/themis/**'
-      - 'tests/common/**'
-      - 'tests/soter/**'
-      - 'tests/themis/**'
-      - '!tests/themis/wrappers/android/**'
-      - 'third_party/boringssl/src/**'
-      - 'tools/afl/**'
-      - '**/*.mk'
-      - 'Makefile'
-      - '!**/README*'
+#    paths:
+#      - '.github/workflows/test-core.yaml'
+#      - 'benches/themis/**'
+#      - 'docs/examples/c/**'
+#      - 'src/soter/**'
+#      - 'src/themis/**'
+#      - 'tests/common/**'
+#      - 'tests/soter/**'
+#      - 'tests/themis/**'
+#      - '!tests/themis/wrappers/android/**'
+#      - 'third_party/boringssl/src/**'
+#      - 'tools/afl/**'
+#      - '**/*.mk'
+#      - 'Makefile'
+#      - '!**/README*'
   push:
     branches:
       - master
@@ -40,7 +40,7 @@ jobs:
       MATRIX_OS: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-20.04, ubuntu-22.04, macos-12]
+        os: [ubuntu-latest, ubuntu-latest, macos-latest]
       fail-fast: false
     steps:
       - name: Install system dependencies
@@ -60,11 +60,11 @@ jobs:
       - name: Build Themis Core (OpenSSL)
         run: make prepare_tests_basic ENGINE=openssl BUILD_PATH=build-openssl
       - name: Build Themis Core (OpenSSL 3.0)
-        if: ${{ matrix.os != 'ubuntu-20.04' }}
+        if: ${{ matrix.os != 'ubuntu-latest' }}
         run: |
           export ENGINE=openssl
           # macOS has both OpenSSL 1.1.1 and 3.0 installed, be specific.
-          if [[ "$MATRIX_OS" = "macos-12" ]]; then
+          if [[ "$MATRIX_OS" = "macos-latest" ]]; then
             openssl3="$(brew --prefix openssl@3)"
             export ENGINE_INCLUDE_PATH="$openssl3/include"
             export ENGINE_LIB_PATH="$openssl3/lib"
@@ -82,24 +82,24 @@ jobs:
           THEMIS_GEN_EC_KEY_PAIR_UNCOMPRESSED: "1"
         run: make test ENGINE=openssl BUILD_PATH=build-openssl
       - name: Run test suite (OpenSSL 3.0)
-        if: ${{ matrix.os != 'ubuntu-20.04' }}
+        if: ${{ matrix.os != 'ubuntu-latest' }}
         run: |
           export ENGINE=openssl
           # macOS has both OpenSSL 1.1.1 and 3.0 installed, be specific.
-          if [[ "$MATRIX_OS" = "macos-12" ]]; then
+          if [[ "$MATRIX_OS" = "macos-latest" ]]; then
             openssl3="$(brew --prefix openssl@3)"
             export ENGINE_INCLUDE_PATH="$openssl3/include"
             export ENGINE_LIB_PATH="$openssl3/lib"
           fi
           make test BUILD_PATH=build-openssl-3.0
       - name: Run test suite (OpenSSL 3.0, uncompressed keys)
-        if: ${{ matrix.os != 'ubuntu-20.04' }}
+        if: ${{ matrix.os != 'ubuntu-latest' }}
         env:
           THEMIS_GEN_EC_KEY_PAIR_UNCOMPRESSED: "1"
         run: |
           export ENGINE=openssl
           # macOS has both OpenSSL 1.1.1 and 3.0 installed, be specific.
-          if [[ "$MATRIX_OS" = "macos-12" ]]; then
+          if [[ "$MATRIX_OS" = "macos-latest" ]]; then
             openssl3="$(brew --prefix openssl@3)"
             export ENGINE_INCLUDE_PATH="$openssl3/include"
             export ENGINE_LIB_PATH="$openssl3/lib"
@@ -118,7 +118,7 @@ jobs:
 
   examples:
     name: Code examples
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - name: Install system dependencies
         run: |
@@ -145,7 +145,7 @@ jobs:
 
   sanitizers:
     name: Unit tests (with sanitizers)
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     env:
       WITH_FATAL_SANITIZERS: yes
     steps:
@@ -179,7 +179,7 @@ jobs:
 
   benchmarks:
     name: Benchmarks
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - name: Install system dependencies
         run: |
@@ -200,19 +200,19 @@ jobs:
       # Cargo pulls in quite a few stuff from the Internet and Rust always
       # (slowly) recompiles dependencies, so make heavy use of caching
       - name: Cache Cargo registry
-        uses: actions/cache@v1
+        uses: actions/cache@v3
         with:
           path: ~/.cargo/registry
           key: ${{ runner.os }}-cargo-registry-${{ hashFiles('**/Cargo.toml') }}
           restore-keys: ${{ runner.os }}-cargo-registry-
       - name: Cache Cargo index
-        uses: actions/cache@v1
+        uses: actions/cache@v3
         with:
           path: ~/.cargo/git
           key: ${{ runner.os }}-cargo-index-${{ hashFiles('**/Cargo.toml') }}
           restore-keys: ${{ runner.os }}-cargo-index-
       - name: Cache Cargo build
-        uses: actions/cache@v1
+        uses: actions/cache@v3
         with:
           path: target
           key: ${{ runner.os }}-cargo-build-target-${{ hashFiles('**/Cargo.toml') }}
@@ -248,7 +248,7 @@ jobs:
 
   fuzzing:
     name: AFL fuzzing
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     env:
       FUZZ_TIMEOUT: 30s
       THEMIS_DEFAULT_PBKDF2_ITERATIONS: 10
@@ -332,7 +332,7 @@ jobs:
 
   leak-check:
     name: Memory leaks
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - name: Install system dependencies
         run: |
@@ -370,7 +370,7 @@ jobs:
 
   coverage:
     name: Unit test coverage
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - name: Install system dependencies
         run: |
@@ -454,7 +454,7 @@ jobs:
 
   macos-cross-compile:
     name: macOS cross toolchain
-    runs-on: macos-12
+    runs-on: macos-latest
     steps:
       - name: Install system dependencies
         run: |

@@ -2,24 +2,24 @@ name: Integration testing
 
 on:
   pull_request:
-    paths:
-      - '.github/workflows/integration.yaml'
-      - 'gothemis/**'
-      - 'src/soter/**'
-      - 'src/themis/**'
-      - 'src/wrappers/themis/jsthemis/**'
-      - 'src/wrappers/themis/php/**'
-      - 'src/wrappers/themis/php7/**'
-      - 'src/wrappers/themis/python/**'
-      - 'src/wrappers/themis/ruby/**'
-      - 'src/wrappers/themis/rust/**'
-      - 'src/wrappers/themis/wasm/**'
-      - 'third_party/boringssl/src/**'
-      - 'tools/_integration/**'
-      - 'Cargo.toml'
-      - '**/*.mk'
-      - 'Makefile'
-      - '!**/README*'
+#    paths:
+#      - '.github/workflows/integration.yaml'
+#      - 'gothemis/**'
+#      - 'src/soter/**'
+#      - 'src/themis/**'
+#      - 'src/wrappers/themis/jsthemis/**'
+#      - 'src/wrappers/themis/php/**'
+#      - 'src/wrappers/themis/php7/**'
+#      - 'src/wrappers/themis/python/**'
+#      - 'src/wrappers/themis/ruby/**'
+#      - 'src/wrappers/themis/rust/**'
+#      - 'src/wrappers/themis/wasm/**'
+#      - 'third_party/boringssl/src/**'
+#      - 'tools/_integration/**'
+#      - 'Cargo.toml'
+#      - '**/*.mk'
+#      - 'Makefile'
+#      - '!**/README*'
   push:
     branches:
       - master
@@ -34,17 +34,14 @@ env:
 jobs:
   cross-language:
     name: Cross-language tests
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - name: Install system dependencies
         run: |
-          sudo sh -c 'echo "DEBIAN_FRONTEND=noninteractive" >> /etc/environment'
-          sudo apt update
           sudo apt install --yes gcc g++ make libssl-dev \
-            python  python-setuptools \
-            python3 python3-setuptools \
-            ruby ruby-dev \
-            pkg-config clang
+          python3 python3-setuptools python3-pip \
+          ruby ruby-dev \
+          pkg-config clang
       - name: Check out code
         uses: actions/checkout@v2
         with:
@@ -67,9 +64,9 @@ jobs:
           toolchain: stable
           profile: minimal
       - name: Install Node.js 10.x
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
-          node-version: 10.x
+           node-version: 16
       - name: Install Emscripten
         run: |
           version=$(cat src/wrappers/themis/wasm/emscripten/VERSION)
@@ -105,19 +102,19 @@ jobs:
       # Cargo pulls in quite a few stuff from the Internet and Rust always
       # (slowly) recompiles dependencies, so make heavy use of caching
       - name: Cache Cargo registry
-        uses: actions/cache@v1
+        uses: actions/cache@v3
         with:
           path: ~/.cargo/registry
           key: ${{ runner.os }}-cargo-registry-${{ hashFiles('**/Cargo.toml') }}
           restore-keys: ${{ runner.os }}-cargo-registry-
       - name: Cache Cargo index
-        uses: actions/cache@v1
+        uses: actions/cache@v3
         with:
           path: ~/.cargo/git
           key: ${{ runner.os }}-cargo-index-${{ hashFiles('**/Cargo.toml') }}
           restore-keys: ${{ runner.os }}-cargo-index-
       - name: Cache Cargo build
-        uses: actions/cache@v1
+        uses: actions/cache@v3
         with:
           path: target
           key: ${{ runner.os }}-cargo-build-target-tools-${{ hashFiles('**/Cargo.toml') }}
@@ -146,7 +143,7 @@ jobs:
           sudo bash -c 'echo "extension=phpthemis.so" > /etc/php/7.2/cli/conf.d/20-phpthemis.ini'
       - name: Run integration tests
         run: |
-          python tests/_integration/tests_generator.py
+          python3 tests/_integration/tests_generator.py
           echo "Integration tests..."
           bash tests/_integration/integration_total.sh
           echo

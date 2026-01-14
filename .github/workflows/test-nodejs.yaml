@@ -2,17 +2,17 @@ name: JsThemis
 
 on:
   pull_request:
-    paths:
-      - '.github/workflows/test-nodejs.yaml'
-      - 'docs/examples/js/**'
-      - 'docs/examples/ts/**'
-      - 'src/soter/**'
-      - 'src/themis/**'
-      - 'src/wrappers/themis/jsthemis/**'
-      - 'test/jsthemis/**'
-      - '**/*.mk'
-      - 'Makefile'
-      - '!**/README*'
+#    paths:
+#      - '.github/workflows/test-nodejs.yaml'
+#      - 'docs/examples/js/**'
+#      - 'docs/examples/ts/**'
+#      - 'src/soter/**'
+#      - 'src/themis/**'
+#      - 'src/wrappers/themis/jsthemis/**'
+#      - 'test/jsthemis/**'
+#      - '**/*.mk'
+#      - 'Makefile'
+#      - '!**/README*'
   push:
     branches:
       - master
@@ -27,7 +27,7 @@ env:
 jobs:
   unit-tests:
     name: Unit tests
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         node-version:
@@ -64,7 +64,7 @@ jobs:
 
   examples:
     name: Code examples
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         node-version:

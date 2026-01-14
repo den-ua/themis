@@ -2,16 +2,16 @@ name: PyThemis
 
 on:
   pull_request:
-    paths:
-      - '.github/workflows/test-python.yaml'
-      - 'docs/examples/python/**'
-      - 'src/soter/**'
-      - 'src/themis/**'
-      - 'src/wrappers/themis/python/**'
-      - 'tests/pythemis/**'
-      - '**/*.mk'
-      - 'Makefile'
-      - '!**/README*'
+#    paths:
+#      - '.github/workflows/test-python.yaml'
+#      - 'docs/examples/python/**'
+#      - 'src/soter/**'
+#      - 'src/themis/**'
+#      - 'src/wrappers/themis/python/**'
+#      - 'tests/pythemis/**'
+#      - '**/*.mk'
+#      - 'Makefile'
+#      - '!**/README*'
   push:
     branches:
       - master
@@ -26,7 +26,7 @@ env:
 jobs:
   unit-tests:
     name: Unit tests
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - name: Install system dependencies
         run: |
@@ -49,7 +49,7 @@ jobs:
 
   examples:
     name: Code examples
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     strategy:
       fail-fast: false
     services:
